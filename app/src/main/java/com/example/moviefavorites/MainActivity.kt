@@ -24,7 +24,7 @@ import com.example.moviefavorites.vm.MovieViewModel
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-
+//test
 class MainActivity : ComponentActivity() {
     private val viewModel: MovieViewModel by lazy {
         val database = MovieDatabase.getInstance(this)

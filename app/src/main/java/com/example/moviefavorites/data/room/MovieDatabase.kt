@@ -8,11 +8,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.moviefavorites.data.model.Movie
+import kotlinx.serialization.InternalSerializationApi
 
 /**
  * Room Database configuration for the Movie entity.
  * Version: 1 - Initial database schema with Movie entity.
  */
+@OptIn(InternalSerializationApi::class)
 @Database(
     entities = [Movie::class],
     version = 1,

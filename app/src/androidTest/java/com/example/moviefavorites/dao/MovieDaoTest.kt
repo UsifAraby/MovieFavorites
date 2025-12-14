@@ -13,6 +13,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.InternalSerializationApi
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -22,6 +23,7 @@ import org.junit.runner.RunWith
  * Unit tests for MovieDao.
  * Uses an in-memory Room database for testing CRUD operations that are used in the app.
  */
+@OptIn(InternalSerializationApi::class)
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 class MovieDaoTest {

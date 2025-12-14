@@ -5,8 +5,10 @@ package com.example.moviefavorites.data.repository
 
 import com.example.moviefavorites.data.model.Movie
 import kotlinx.coroutines.flow.Flow
+import kotlinx.serialization.InternalSerializationApi
 
 
+@OptIn(InternalSerializationApi::class)
 interface MovieRepository {
 
     fun getAllMovies(): Flow<List<Movie>>
@@ -35,6 +37,7 @@ interface MovieRepository {
 }
 
 
+@OptIn(InternalSerializationApi::class)
 class MovieRepositoryImpl(
     private val movieDao: com.example.moviefavorites.data.room.MovieDao
 ) : MovieRepository {

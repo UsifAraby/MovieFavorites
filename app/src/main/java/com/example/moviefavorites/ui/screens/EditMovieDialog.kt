@@ -22,8 +22,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.moviefavorites.data.model.Movie
 import com.example.moviefavorites.vm.MovieViewModel
+import kotlinx.serialization.InternalSerializationApi
 
 
+@OptIn(InternalSerializationApi::class)
 @Composable
 fun EditMovieDialog(
     movie: Movie,

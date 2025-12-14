@@ -4,6 +4,7 @@
 package com.example.moviefavorites.data.seed
 
 import com.example.moviefavorites.data.model.Movie
+import kotlinx.serialization.InternalSerializationApi
 
 /**
  * Object providing a seeded list of movies for initial app launch.
@@ -12,6 +13,7 @@ object MovieSeed {
     /**
      * Returns a list of pre-populated movies.
      */
+    @OptIn(InternalSerializationApi::class)
     fun getSeededMovies(): List<Movie> = listOf(
         Movie(
             id = 1,

@@ -7,6 +7,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.moviefavorites.data.model.Movie
 import kotlinx.coroutines.flow.Flow
+import kotlinx.serialization.InternalSerializationApi
 
 @Dao
 interface MovieDao {
@@ -16,6 +17,7 @@ interface MovieDao {
      * @param movie The movie entity to insert.
      * @return The row ID of the inserted movie.
      */
+    @OptIn(InternalSerializationApi::class)
     @Insert
     suspend fun insert(movie: Movie): Long
 
@@ -25,6 +27,7 @@ interface MovieDao {
      * @param movies List of movie entities to insert.
      * @return List of row IDs of the inserted movies.
      */
+    @OptIn(InternalSerializationApi::class)
     @Insert
     suspend fun insertAll(movies: List<Movie>): List<Long>
 
@@ -33,6 +36,7 @@ interface MovieDao {
      *
      * @param movie The movie entity with updated values.
      */
+    @OptIn(InternalSerializationApi::class)
     @Update
     suspend fun update(movie: Movie)
 
@@ -41,6 +45,7 @@ interface MovieDao {
      *
      * @param movie The movie entity to delete.
      */
+    @OptIn(InternalSerializationApi::class)
     @Delete
     suspend fun delete(movie: Movie)
 
@@ -49,6 +54,7 @@ interface MovieDao {
      *
      * @return Flow emitting the list of all movies.
      */
+    @OptIn(InternalSerializationApi::class)
     @Query("SELECT * FROM movies ORDER BY title ASC")
     fun getAllMovies(): Flow<List<Movie>>
 
@@ -57,6 +63,7 @@ interface MovieDao {
      *
      * @return Flow emitting the list of favorite movies.
      */
+    @OptIn(InternalSerializationApi::class)
     @Query("SELECT * FROM movies WHERE isFavorite = 1 ORDER BY title ASC")
     fun getFavoriteMovies(): Flow<List<Movie>>
 
@@ -66,6 +73,7 @@ interface MovieDao {
      * @param id The ID of the movie to retrieve.
      * @return Flow emitting the movie with the given ID, or null if not found.
      */
+    @OptIn(InternalSerializationApi::class)
     @Query("SELECT * FROM movies WHERE id = :id")
     fun getMovieById(id: Int): Flow<Movie?>
 
@@ -75,6 +83,7 @@ interface MovieDao {
      * @param query The search query string.
      * @return Flow emitting the list of movies matching the query.
      */
+    @OptIn(InternalSerializationApi::class)
     @Query("SELECT * FROM movies WHERE title LIKE '%' || :query || '%' ORDER BY title ASC")
     fun searchMoviesByTitle(query: String): Flow<List<Movie>>
 

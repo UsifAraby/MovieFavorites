@@ -41,6 +41,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.moviefavorites.data.model.Movie
 import com.example.moviefavorites.vm.MovieViewModel
+import kotlinx.serialization.InternalSerializationApi
 
 
 /**
@@ -50,7 +51,7 @@ import com.example.moviefavorites.vm.MovieViewModel
  * @param viewModel The MovieViewModel.
  * @param onBackClick Callback when back button is clicked.
  */
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, InternalSerializationApi::class)
 @Composable
 fun DetailScreen(
     movie: Movie,

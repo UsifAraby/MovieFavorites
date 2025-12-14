@@ -41,15 +41,15 @@ import androidx.compose.ui.unit.dp
 import com.example.moviefavorites.data.model.Movie
 import com.example.moviefavorites.ui.components.MovieCard
 import com.example.moviefavorites.vm.MovieViewModel
+import kotlinx.serialization.InternalSerializationApi
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, InternalSerializationApi::class)
 @Composable
 fun MainScreen(
     viewModel: MovieViewModel,
     onMovieClick: (Movie) -> Unit,
-    onAddClick: () -> Unit,
-    onFlutterClick: () -> Unit
+    onAddClick: () -> Unit
 ) {
     val allMovies = viewModel.allMovies.collectAsState().value
     val searchQuery = viewModel.searchQuery.collectAsState().value
@@ -162,9 +162,9 @@ fun MainScreen(
                 }
 
                 // Flutter demo button
-                Button(onClick = onFlutterClick, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
-                    Text("Open Flutter Demo")
-                }
+//                Button(onClick = onFlutterClick, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
+//                    Text("Open Flutter Demo")
+//                }
 
                 // Movie list
                 if (displayedMovies.isEmpty()) {

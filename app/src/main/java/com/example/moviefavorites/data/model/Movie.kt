@@ -2,9 +2,10 @@ package com.example.moviefavorites.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.Serializable
 
-//Marked with @Serializable for JSON serialization to pass to Flutter app.
+@InternalSerializationApi //Marked with @Serializable for JSON serialization to pass to Flutter app.
 @Serializable
 @Entity(tableName = "movies")
 data class Movie(

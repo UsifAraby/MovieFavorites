@@ -14,8 +14,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.serialization.InternalSerializationApi
 
 
+@OptIn(InternalSerializationApi::class)
 class MovieViewModel(
     private val repository: MovieRepository
 ) : ViewModel() {
@@ -52,6 +54,7 @@ class MovieViewModel(
     }
 
 
+    @OptIn(InternalSerializationApi::class)
     private fun initializeDatabase() {
         viewModelScope.launch(Dispatchers.IO) {
             try {

@@ -12,6 +12,7 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.InternalSerializationApi
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -21,7 +22,7 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 
-@OptIn(ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalCoroutinesApi::class, InternalSerializationApi::class)
 class MovieViewModelTest {
     @Mock
     private lateinit var mockRepository: MovieRepository

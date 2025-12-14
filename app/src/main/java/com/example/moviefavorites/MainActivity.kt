@@ -18,10 +18,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.moviefavorites.data.repository.MovieRepositoryImpl
 import com.example.moviefavorites.data.room.MovieDatabase
+import com.example.moviefavorites.ui.screens.AddMovieDialog
 import com.example.moviefavorites.ui.screens.DetailScreen
+import com.example.moviefavorites.ui.screens.MainScreen
 import com.example.moviefavorites.vm.MovieViewModel
+import kotlinx.serialization.InternalSerializationApi
 
-//test
+
+@OptIn(InternalSerializationApi::class)
 class MainActivity : ComponentActivity() {
     private val viewModel: MovieViewModel by lazy {
         val database = MovieDatabase.getInstance(this)
@@ -45,7 +49,16 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = "main"
                     ) {
-                       // for flutter to be added later
+                        composable("main") {
+                            MainScreen(
+                                viewModel = viewModel,
+                                onMovieClick = { movie ->
+                                    viewModel.selectMovie(movie)
+                                    navController.navigate("detail")
+                                },
+                                onAddClick = { showAddDialog = true }
+                            )
+                        }
                         composable("detail") {
                             selectedMovie?.let { movie ->
                                 DetailScreen(
@@ -60,8 +73,12 @@ class MainActivity : ComponentActivity() {
                         }
                     }
 
-                   //add movie
-
+                    if (showAddDialog) {
+                        AddMovieDialog(
+                            viewModel = viewModel,
+                            onDismiss = { showAddDialog = false }
+                        )
+                    }
                 }
             }
         }

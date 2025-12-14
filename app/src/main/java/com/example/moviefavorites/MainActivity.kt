@@ -1,7 +1,6 @@
 
 package com.example.moviefavorites
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,8 +20,6 @@ import com.example.moviefavorites.data.repository.MovieRepositoryImpl
 import com.example.moviefavorites.data.room.MovieDatabase
 import com.example.moviefavorites.ui.screens.DetailScreen
 import com.example.moviefavorites.vm.MovieViewModel
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 //test
 class MainActivity : ComponentActivity() {

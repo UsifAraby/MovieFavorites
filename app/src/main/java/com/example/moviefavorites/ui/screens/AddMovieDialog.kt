@@ -1,6 +1,3 @@
-/**
- * Dialog for adding a new movie.
- */
 package com.example.moviefavorites.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement

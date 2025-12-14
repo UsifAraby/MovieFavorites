@@ -42,14 +42,7 @@ import com.example.moviefavorites.data.model.Movie
 import com.example.moviefavorites.ui.components.MovieCard
 import com.example.moviefavorites.vm.MovieViewModel
 
-/**
- * Main screen displaying the list of all movies with search functionality.
- *
- * @param viewModel The MovieViewModel providing movie data.
- * @param onMovieClick Callback when a movie is clicked.
- * @param onAddClick Callback when the add FAB is clicked.
- * @param onFlutterClick Callback when the Flutter demo button is clicked.
- */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(

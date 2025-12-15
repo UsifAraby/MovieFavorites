@@ -1,0 +1,23 @@
+name: flutter_demo
+description: >-
+  A minimal Flutter demo app showcasing an interactive movie card widget.
+  Can be launched from the Android MovieFavorites app via Intent.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

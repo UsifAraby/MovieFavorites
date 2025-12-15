@@ -1,0 +1,46 @@
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+*.iml
+*.lock
+build/
+pubspec.lock
+.env
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Android
+android/.gradle/
+android/.idea/
+android/local.properties
+android/build/
+android/**/GeneratedPluginRegistrant.java
+
+# iOS
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Pods/
+ios/Podfile.lock
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+
+# Dart
+.dart_tool
+.packages
+pubspec.lock
+
+# Coverage
+coverage/
+
+# Local development
+*.log
+.env.local

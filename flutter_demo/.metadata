@@ -1,0 +1,16 @@
+# This file tracks properties of this Flutter project.
+# Used by Flutter tooling to track, build and create release packages.
+
+version:
+  revision: "77d935af4db863d5b4a6c4ff810dbe6b00b8f1d5"
+  channel: "stable"
+
+project_type: app
+
+# This file customizes Flutter-level build settings.
+#
+# Flutter provides template files for license headers in comments at the top
+# of each file.
+#
+# The files included in the Flutter project template are licensed under the
+# Flutter and Dart open source license.

@@ -49,7 +49,8 @@ import kotlinx.serialization.InternalSerializationApi
 fun MainScreen(
     viewModel: MovieViewModel,
     onMovieClick: (Movie) -> Unit,
-    onAddClick: () -> Unit
+    onAddClick: () -> Unit,
+    onFlutterClick: () -> Unit
 ) {
     val allMovies = viewModel.allMovies.collectAsState().value
     val searchQuery = viewModel.searchQuery.collectAsState().value
@@ -162,9 +163,9 @@ fun MainScreen(
                 }
 
                 // Flutter demo button
-//                Button(onClick = onFlutterClick, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
-//                    Text("Open Flutter Demo")
-//                }
+                Button(onClick = onFlutterClick, modifier = Modifier.fillMaxWidth().padding(8.dp)) {
+                    Text("Open Flutter Demo")
+                }
 
                 // Movie list
                 if (displayedMovies.isEmpty()) {

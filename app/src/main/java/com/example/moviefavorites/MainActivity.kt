@@ -1,6 +1,7 @@
 
 package com.example.moviefavorites
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,6 +24,8 @@ import com.example.moviefavorites.ui.screens.DetailScreen
 import com.example.moviefavorites.ui.screens.MainScreen
 import com.example.moviefavorites.vm.MovieViewModel
 import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 
 @OptIn(InternalSerializationApi::class)
@@ -56,7 +59,8 @@ class MainActivity : ComponentActivity() {
                                     viewModel.selectMovie(movie)
                                     navController.navigate("detail")
                                 },
-                                onAddClick = { showAddDialog = true }
+                                onAddClick = { showAddDialog = true },
+                                onFlutterClick = { launchFlutterDemo() }
                             )
                         }
                         composable("detail") {
@@ -84,4 +88,42 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
+    private fun launchFlutterDemo() {
+        try {
+            val flutterPackageName = "com.example.flutter_demo"
+            val flutterActivityName = "com.example.flutter_demo.MainActivity"
+
+            android.util.Log.d("MainActivity", "Attempting to launch Flutter app: $flutterPackageName")
+
+            // Create explicit intent using component name
+            val intent = Intent().apply {
+                component = android.content.ComponentName(flutterPackageName, flutterActivityName)
+                action = Intent.ACTION_MAIN
+                addCategory(Intent.CATEGORY_LAUNCHER)
+            }
+
+            android.util.Log.d("MainActivity", "Intent created, launching Flutter app")
+
+            // Get current movies from ViewModel
+            val allMovies = viewModel.allMovies.value
+            android.util.Log.d("MainActivity", "Movies to send: ${allMovies.size}")
+
+            // Serialize movies to JSON
+            val moviesJson = Json.encodeToString(allMovies)
+            android.util.Log.d("MainActivity", "Serialized JSON: ${moviesJson.take(100)}...")
+
+            // Pass data via Intent extras
+            intent.putExtra("movies_data", moviesJson)
+            intent.putExtra("selected_movie", viewModel.selectedMovie.value?.let {
+                Json.encodeToString(it)
+            })
+
+            startActivity(intent)
+            android.util.Log.d("MainActivity", "Flutter app launched successfully")
+        } catch (e: Exception) {
+            android.util.Log.e("MainActivity", "Error launching Flutter demo", e)
+            e.printStackTrace()
+        }
+    }
 }
